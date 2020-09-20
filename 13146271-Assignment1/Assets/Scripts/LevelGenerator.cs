@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
@@ -51,15 +52,15 @@ public class LevelGenerator : MonoBehaviour
 
     private void GenerateGrid()
     {
-        for (int col = 0; col < levelMap.GetLength(0); col++)
+        for (int row = 0; row < levelMap.GetLength(1); row++)
         {
-            for (int row = 0; row < levelMap.GetLength(1); row++)
+            for (int col = 0; col < levelMap.GetLength(0); col++)
             {
-                if (levelMap[row,col] == 0)
+                if (levelMap[row,col].Equals(0))
                 {
                     
                 }
-                else if(levelMap[row,col] == 1)
+                if(levelMap[row,col].Equals(1))
                 {
                     GameObject referenceOCorner = (GameObject)Instantiate(Resources.Load("Outside Corner"));
                     GameObject oCorner = (GameObject)Instantiate(referenceOCorner, transform);
@@ -67,7 +68,7 @@ public class LevelGenerator : MonoBehaviour
                     float posY = row * -tileSize;
                     oCorner.transform.position = new Vector2(posX, posY);
                 }
-                else if (levelMap[row,col] == 2)
+                if (levelMap[row,col].Equals(2))
                 {
                     GameObject referenceOWall = (GameObject)Instantiate(Resources.Load("Outside Wall"));
                     GameObject oWall = (GameObject)Instantiate(referenceOWall, transform);
@@ -75,7 +76,7 @@ public class LevelGenerator : MonoBehaviour
                     float posY = row * -tileSize;
                     oWall.transform.position = new Vector2(posX, posY);
                 }
-                else if (levelMap[row, col] == 3)
+                if (levelMap[row, col].Equals(3))
                 {
                     GameObject referenceICorner = (GameObject)Instantiate(Resources.Load("Inside Corner"));
                     GameObject iCorner = (GameObject)Instantiate(referenceICorner, transform);
@@ -83,7 +84,7 @@ public class LevelGenerator : MonoBehaviour
                     float posY = row * -tileSize;
                     iCorner.transform.position = new Vector2(posX, posY);
                 }
-                else if (levelMap[row, col] == 4)
+                if (levelMap[row, col].Equals(4))
                 {
                     GameObject referenceIWall = (GameObject)Instantiate(Resources.Load("Inside Corner"));
                     GameObject iWall = (GameObject)Instantiate(referenceIWall, transform);
@@ -91,7 +92,7 @@ public class LevelGenerator : MonoBehaviour
                     float posY = row * -tileSize;
                     iWall.transform.position = new Vector2(posX, posY);
                 }
-                else if (levelMap[row, col] == 5)
+                if (levelMap[row, col].Equals(5))
                 {
                     GameObject referenceNPellet = (GameObject)Instantiate(Resources.Load("Normal Pellet"));
                     GameObject nPellet = (GameObject)Instantiate(referenceNPellet, transform);
@@ -99,7 +100,7 @@ public class LevelGenerator : MonoBehaviour
                     float posY = row * -tileSize;
                     nPellet.transform.position = new Vector2(posX, posY);
                 }
-                else if (levelMap[row, col] == 6)
+                if (levelMap[row, col].Equals(6))
                 {
                     GameObject referencePPellet = (GameObject)Instantiate(Resources.Load("Power Pellet"));
                     GameObject pPellet = (GameObject)Instantiate(referencePPellet, transform);
@@ -107,7 +108,7 @@ public class LevelGenerator : MonoBehaviour
                     float posY = row * -tileSize;
                     pPellet.transform.position = new Vector2(posX, posY);
                 }
-                else if (levelMap[row, col] == 7)
+                if (levelMap[row, col].Equals(7))
                 {
                     GameObject referenceTJunction = (GameObject)Instantiate(Resources.Load("T Junction"));
                     GameObject tJunction = (GameObject)Instantiate(referenceTJunction, transform);
@@ -117,6 +118,10 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
         }
+
+        float GridH = levelMap.GetLength(0) * tileSize ;
+        float GridW = levelMap.GetLength(1) * tileSize ;
+        transform.position = new Vector2(-GridW / 2 + tileSize / 2, GridH / 2 - tileSize / 2);
     }
 
     private void RotateWall()

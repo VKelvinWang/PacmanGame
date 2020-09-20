@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    public AudioSource BackgroundIntro;
-    public AudioSource BackgroundNormalState;
+    [SerializeField]
+    private AudioSource BackgroundIntro;
+    [SerializeField]
+    private AudioSource BackgroundNormalState;
     // Start is called before the first frame update
     void Start()
     {
