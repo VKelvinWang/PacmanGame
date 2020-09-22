@@ -3,3 +3,4 @@
 File is made by: 13146271 Vinsensius Kelvin Wang
 Unity Version being used: 2019.3.3f1
 All commits & contributions are shown on the insights channel of Github
+Link to github repository: https://github.com/VKelvinWang/PacmanGame.git
