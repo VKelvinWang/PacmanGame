@@ -5,19 +5,23 @@ using UnityEngine;
 public class MusicManager : MonoBehaviour
 {
     [SerializeField]
-    private AudioSource BackgroundIntro;
+    private AudioClip BackgroundIntro;
     [SerializeField]
-    private AudioSource BackgroundNormalState;
+    private AudioClip BackgroundNormalState;
     // Start is called before the first frame update
     void Start()
     {
-        BackgroundIntro.Play();
-        Invoke("PlayBackground", 144f);
+        StartCoroutine(playEngineSound());
     }
 
-    void PlayBackground()
+    IEnumerator playEngineSound()
     {
-        BackgroundNormalState.Play();
+            GetComponent<AudioSource>().clip = BackgroundIntro;
+            GetComponent<AudioSource>().Play();
+            yield return new WaitForSeconds(BackgroundIntro.length);
+            GetComponent<AudioSource>().clip = BackgroundNormalState;
+            GetComponent<AudioSource>().Play();
+            GetComponent<AudioSource>().loop = true;
     }
 
 }

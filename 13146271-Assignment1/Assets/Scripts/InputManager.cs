@@ -19,7 +19,6 @@ public class InputManager : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Space))
             itemList.Add(Instantiate(item, new Vector3(0.0f, 0.5f, 0.0f), Quaternion.identity));
-        
         if (Input.GetKeyDown("a"))
             LoopAddTween("a");
         if (Input.GetKeyDown("d"))
