@@ -36,7 +36,7 @@ public class TimeManager : MonoBehaviour
         timer += Time.deltaTime;
         if ((int)timer > lastTime) {
             lastTime = (int)timer;
-			Debug.Log(lastTime);
+			//Debug.Log(lastTime);
         }
 
          if (timer > lastMoveTime + (int)moveWait) {
