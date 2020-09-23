@@ -49,10 +49,23 @@ public class LevelGenerator : MonoBehaviour
 
     void Start()
     {
+        SpriteInstantiate();
         GenerateLevel(levelMap, 0f, 0f, 1, 1, 0);
         GenerateLevel(levelMap, -6.5f, -22f, -1, 1, 1);
         GenerateLevel(levelMap, -20.5f, -7.25f, 1, -1, 2);
         GenerateLevel(levelMap, -20.5f, -22f, -1, -1, 3);
+    }
+
+    private void SpriteInstantiate()
+    {
+        GameObject ghostN = (GameObject)Instantiate(Resources.Load("GhostNeon"), transform);
+        ghostN.transform.position = new Vector3(12, -14, 10);
+        GameObject ghostP = (GameObject)Instantiate(Resources.Load("GhostPink"), transform);
+        ghostP.transform.position = new Vector3(13, -14, 10);
+        GameObject ghostR = (GameObject)Instantiate(Resources.Load("GhostRed"), transform);
+        ghostR.transform.position = new Vector3(12, -15, 10);
+        GameObject ghostB = (GameObject)Instantiate(Resources.Load("GhostBlue"), transform);
+        ghostB.transform.position = new Vector3(13, -15, 10);
     }
 
     private void GenerateLevel(int[,] map, float startcol, float startrow, int xquad, int yquad, int quadrant)
