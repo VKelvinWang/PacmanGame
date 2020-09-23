@@ -5,15 +5,17 @@ using UnityEngine;
 public class PacmanManager : MonoBehaviour
 {
     [SerializeField]
-    private AudioClip BackgroundIntro;
+    private AudioSource PacmanSound;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W))
+        if (!PacmanSound.isPlaying)
         {
-            GetComponent<AudioSource>().clip = BackgroundIntro;
-            GetComponent<AudioSource>().Play();
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+            {
+                PacmanSound.Play();
+            }
         }
     }
 }
